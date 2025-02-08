@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+ิbody{
+    font-family: "Oswald", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+    position: relative;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    gap: 10px;
+}
+
+#block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+}
+.question-block{
+    display:flex;
+}
+.answer-block{
+    display:none;
+}
+#Question{
+    font-size: 100px;
+    text-align: center;
+}
+#Answer{
+    font-size: 50px;
+    text-align: center;
+}
+.button{
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #b8b8b8;
+    color: white;
+    border-radius: 5px;
+    font-size: 50px;
+    position: absolute;
+    bottom: 15%;
+    z-index: 0;
+}
+
+.button::after{
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgb(188, 176, 167);
+    transition: width 0.3s ease-in-out;
+    z-index: -1;
+    border-radius: 5px;
+}
+.button:hover::after{
+    width: 100%;
+}

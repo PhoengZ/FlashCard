@@ -20,7 +20,7 @@ async function getQuestion() {
 async function getAnswer(word){
     let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
     if (!response.ok){
-        Answer.innerText = "์Not found a word in oxford-dictionary"
+        Answer.innerText = "Not found a word in oxford-dictionary"
         return;
     }
     const ans = await response.json();
@@ -29,11 +29,13 @@ async function getAnswer(word){
 
 rev.addEventListener("click",async()=>{
     await getAnswer(question_now);
-    qb.hidden = true;
-    ab.hidden = false;
+    qb.style.display = "none";
+    ab.style.display  = "flex";
 })
 nq.addEventListener("click", async ()=>{
     await getQuestion();
-    qb.hidden = false;
-    ab.hidden = true;
+    qb.style.display = "flex";
+    ab.style.display  = "none";
 });
+
+ab.style.display  = "none";

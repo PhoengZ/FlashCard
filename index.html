@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>FlashCard</title>
 </head>
 <body>
-    <h1>Flash card</h1>
-    <div class="question-block">
-        <b id="Question">Question</b>
-        <p></p>
-        <button id="reveal">Reveal</button>
-    </div>
-    <div class="answer-block" hidden>
-        <p><b id="Answer">
-            Answer
-        </b></p>
-        <button id="next-question">Next question</button>
-    </div>
+    <div id="main">
+        <div class="question-block" id="block">
+            <b id="Question">Question</b>
+            <p></p>
+            <button id="reveal" class="button">Reveal</button>
+        </div>
+        <div class="answer-block" id="block">
+            <p><b id="Answer">
+                Answer
+            </b></p>
+            <button id="next-question" class="button">Next question</button>
+        </div>
+    </div>  
     <script src="main.js"></script>
 </body>
 </html>
