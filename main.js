@@ -15,7 +15,7 @@ async function getQuestion() {
     }
     const word = await response.json();
     question.innerText = word[0];
-    getAnswer(word[0]);
+    question_now = word[0];
 }
 async function getAnswer(word){
     let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
@@ -27,7 +27,8 @@ async function getAnswer(word){
     Answer.innerText = ans[0].meanings[0].definitions[0].definition;
 }
 
-rev.addEventListener("click",()=>{
+rev.addEventListener("click",async()=>{
+    await getAnswer(question_now);
     qb.hidden = true;
     ab.hidden = false;
 })
