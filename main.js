@@ -8,27 +8,29 @@ let nq = document.querySelector("#next-question");
 let question_now = getQuestion();
 
 async function getQuestion() {
+    nq.disabled = true;
     let response = await fetch("https://random-word-api.herokuapp.com/word");
-    if (!response.ok){
-        question.innerText = "Error on fetching to randon-word-api";
-        return;
+    let word = await response.json();
+    while (await getAnswer(word[0],false) === "Not found"){
+        response = await fetch("https://random-word-api.herokuapp.com/word");
+        word = await response.json();
     }
-    const word = await response.json();
     question.innerText = word[0];
     question_now = word[0];
+    nq.disabled = false;
 }
-async function getAnswer(word){
+async function getAnswer(word,b){
     let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
     if (!response.ok){
-        Answer.innerText = "Not found a word in oxford-dictionary"
-        return;
+        return "Not found";
     }
     const ans = await response.json();
-    Answer.innerText = ans[0].meanings[0].definitions[0].definition;
+    if (b)Answer.innerText = ans[0].meanings[0].definitions[0].definition;
+    return "Found";
 }
 
 rev.addEventListener("click",async()=>{
-    await getAnswer(question_now);
+    await getAnswer(question_now,true);
     qb.style.display = "none";
     ab.style.display  = "flex";
 })
